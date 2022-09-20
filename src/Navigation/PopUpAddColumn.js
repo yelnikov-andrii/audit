@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { SELECT_COLUMNS, OPEN_POPUP_COLUMNS } from "../app/storeReducer";
+import { SELECT_COLUMNS, OPEN_POPUP_COLUMNS, APPLY_COLUMNS } from "../app/storeReducer";
 
 export const PopUpAddColumn = () => {
   const selectedArr = useSelector(state => state.store.selectedColumns);
@@ -9,6 +9,7 @@ export const PopUpAddColumn = () => {
     'Audit region',
     'Document status',
     'Audit risk rating',
+    'Audit lead'
   ];
   const dispatch = useDispatch();
 
@@ -17,6 +18,7 @@ export const PopUpAddColumn = () => {
       <form onSubmit={(event) => {
           event.preventDefault();
           dispatch({type: OPEN_POPUP_COLUMNS})
+          dispatch({type: APPLY_COLUMNS});
         }}>
       <div className="popupAddColumn__buttons">
         <p className="popupAddColumn__buttons_txt">

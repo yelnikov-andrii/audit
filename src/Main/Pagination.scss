@@ -2,11 +2,19 @@
   display: flex;
   justify-content: space-between;
 
+  &__container {
+    width: 120px;
+    overflow-x: hidden;
+  }
+
   &__buttons {
+    padding: 0 20px 0 0;
+    position: relative;
 
     &_list {
       display: flex;
       list-style: none;
+      gap: 5px;
     }
   }
 }

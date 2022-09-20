@@ -6,6 +6,7 @@ export const SELECT_COLUMNS = 'select_columns';
 export const GET_OPTIONS = 'get_options';
 export const OPEN_POPUP = 'open_popup';
 export const OPEN_POPUP_COLUMNS = 'open_popup_columns';
+export const APPLY_COLUMNS = 'apply_columns';
 
 
 const defaultState = {
@@ -21,6 +22,15 @@ const defaultState = {
     'Audit region',
     'Document status',
     'Audit risk rating',
+    'Audit lead'
+  ],
+  appliedColumns: [
+    'Audit number',
+    'Audit name',
+    'Audit region',
+    'Document status',
+    'Audit risk rating',
+    'Audit lead'
   ],
   popUpIsOpen: false,
   popUpColIsOpen: false,
@@ -74,6 +84,12 @@ export const storeReducer = (
       columns.push(action.payload);
       return {...state, selectedColumns: [...columns]}
      }
+
+     case APPLY_COLUMNS:
+      return {
+        ...state,
+        appliedColumns: [...state.selectedColumns]
+      }
 
     case GET_OPTIONS:
       return {
