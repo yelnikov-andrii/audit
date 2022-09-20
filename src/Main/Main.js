@@ -25,7 +25,13 @@ export const Main = ({data}) => {
   return (
     <main className="main">
       <div className="container">
-      <table className="main__table table">
+      {data.length === 0 ? (
+        <div>
+          No data
+        </div>
+      ) : (
+        <>
+        <table className="main__table table">
         <thead>
         <tr className="table__header">
         {columns.includes('Audit number') && (<th className="table__header_row">Audit number</th>)}
@@ -118,6 +124,8 @@ export const Main = ({data}) => {
         </button>
         </div>
       </div>
+        </>
+      )}
       </div>
     </main>
   )
