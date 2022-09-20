@@ -1,0 +1,17 @@
+.table {
+
+  &__header {
+
+    &_row {
+      border: 1px solid grey;
+      border-collapse: collapse;
+    }
+  }
+
+  &__body {
+    &_row {
+      border: 1px solid gray;
+      border-collapse: collapse;
+    }
+  }
+}

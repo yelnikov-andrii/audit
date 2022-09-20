@@ -1,0 +1,44 @@
+.popupFilter {
+  position: absolute;
+  top: 40px;
+  right: 151px;
+  width: 220px;
+  height: 350px;
+  background-color: #fff;
+  border-radius: 4px;
+  padding: 10px;
+  border: 1px solid gray;
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+
+    &_txt {
+      font-weight: 600;
+      margin: 0;
+    }
+
+    &_btn {
+      border: none;
+      outline: none;
+      background: none;
+      color: blue;
+      text-decoration: underline;
+
+    }
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+
+      &_button {
+        color: #fff;
+        background-color: blue;
+        align-self: flex-end;
+        width: 60px;
+        height: 25px;
+      }
+  }
+}

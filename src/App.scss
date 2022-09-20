@@ -1,0 +1,17 @@
+@import './Navigation/Navigation.scss';
+@import './Navigation/Form.scss';
+@import './Main/Main.scss';
+@import './Main/Pagination.scss';
+@import './Main/Table.scss';
+@import './Navigation/PopupFilter.scss';
+@import './Navigation/Select.scss';
+@import './Navigation/PopupAddColumn.scss';
+
+body {
+  margin: 0;
+}
+
+.container {
+  max-width: 1024px;
+  margin: 0 auto;
+}

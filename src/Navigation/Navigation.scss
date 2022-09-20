@@ -1,0 +1,32 @@
+.navigation {
+  padding: 10px 0;
+  width: 100%;
+
+  &__blockTitle {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    color: #000077;
+  }
+
+  &__blockForm {
+    padding: 20px;
+    background-color: #000077;;
+  }
+
+  &__form {
+    width: 100%;
+    display: flex;
+  }
+
+  &__button {
+    border: none;
+    background-color: blue;
+    outline: none;
+    color: #fff;
+  }
+
+  &__header {
+    margin: 0;
+  }
+}

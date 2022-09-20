@@ -1,0 +1,25 @@
+.form {
+  display: flex;
+  gap: 10px;
+  position: relative;
+
+  &__input {
+    width: 70%;
+    height: 25px;
+    border-radius: 6px;
+    outline: none;
+    text-indent: 10px;
+    padding: 5px;
+  }
+
+  &__btn {
+    border: none;
+    outline: none;
+    color: #fff;
+    background-color: blue;
+
+    &--search {
+      background-color: blue;
+    }
+  }
+}
