@@ -12,7 +12,7 @@ export const Main = ({data}) => {
   if (lastItem > data.length) {
     lastItem = data.length;
   }
-  const firstItem = lastItem - 9;
+  const firstItem = lastItem - 10;
   const currentContent = data.slice(firstItem, lastItem);
   const amountOfPages = Math.ceil(data.length / 10);
   const pages = [];
@@ -54,7 +54,7 @@ export const Main = ({data}) => {
       </table>
       <div className="main__blockPagination pagination">
         <p className="pagination__txt">
-          Showing from {firstItem} to {lastItem} of {data.length}
+          Showing from {firstItem + 1} to {lastItem} of {data.length}
         </p>
         <div className="pagination__buttons">
         <div 
