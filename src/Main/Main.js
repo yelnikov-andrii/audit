@@ -12,11 +12,33 @@ export const Main = ({data}) => {
   if (lastItem > data.length) {
     lastItem = data.length;
   }
+
+  const [sortedData, setSortedData] = useState(data);
   const firstItem = lastItem - 10;
-  const currentContent = data.slice(firstItem, lastItem);
   const amountOfPages = Math.ceil(data.length / 10);
   const pages = [];
   const [translate, setTranslate] = useState(0);
+  const [sortByWhat, setSortByWhat] = useState('');
+
+  useEffect(() => {
+    setSortedData(data)
+  }, [data]);
+
+  const sortBy = (title) => {
+    if (title) {
+      setSortedData(prev => {
+        const sorted = [...prev].sort((a, b) => a[`${title}`].localeCompare(b[`${title}`]));
+        return sorted;
+      })
+    }
+  }
+
+  const currentContent = sortedData.slice(firstItem, lastItem);
+
+
+  useEffect(() => {
+    sortBy(sortByWhat);
+  }, [sortByWhat])
 
   for (let i = 1; i <= amountOfPages; i++) {
     pages.push(i);
@@ -25,7 +47,7 @@ export const Main = ({data}) => {
   return (
     <main className="main">
       <div className="container">
-      {data.length === 0 ? (
+      {sortedData.length === 0 ? (
         <div>
           No data
         </div>
@@ -34,12 +56,64 @@ export const Main = ({data}) => {
         <table className="main__table table">
         <thead>
         <tr className="table__header">
-        {columns.includes('Audit number') && (<th className="table__header_row">Audit number</th>)}
-        {columns.includes('Audit name') && (<th className="table__header_row">Audit name</th>)}
-        {columns.includes('Audit region') && (<th className="table__header_row">Audit region</th>)}
-        {columns.includes('Document status') && (<th className="table__header_row">Document status</th>)}
-        {columns.includes('Audit risk rating') && (<th className="table__header_row">Audit risk rating</th>)}
-        {columns.includes('Audit lead') && (<th className="table__header_row">Audit lead</th>)}
+        {columns.includes('Audit number') && (
+          <th 
+            className="table__header_row"
+            onClick={() => {
+              setSortByWhat('number');
+            }}
+          >
+            Audit number
+          </th>
+        )}
+        {columns.includes('Audit name') && (
+        <th 
+          className="table__header_row"
+          onClick={() => {
+            setSortByWhat('name');
+          }}
+        >
+          Audit name
+        </th>)}
+        {columns.includes('Audit region') && (
+        <th 
+          className="table__header_row"
+          onClick={() => {
+            setSortByWhat('region');
+          }}
+        >
+          Audit region
+        </th>
+        )}
+        {columns.includes('Document status') && (
+        <th 
+          className="table__header_row"
+          onClick={() => {
+            setSortByWhat('status');
+          }}
+          >Document status
+        </th>
+        )}
+        {columns.includes('Audit risk rating') && (
+        <th 
+          className="table__header_row"
+          onClick={() => {
+            setSortByWhat('rating');
+          }}
+        >
+          Audit risk rating
+        </th>
+        )}
+        {columns.includes('Audit lead') && (
+        <th 
+          className="table__header_row"
+          onClick={() => {
+            setSortByWhat('lead');
+          }}
+        >
+          Audit lead
+        </th>
+        )}
         </tr>
         </thead>
         <tbody>

@@ -5,7 +5,6 @@ export const SELECT_OPTIONS_STATUS = 'select_options_status';
 export const SELECT_COLUMNS = 'select_columns';
 export const GET_OPTIONS = 'get_options';
 export const OPEN_POPUP = 'open_popup';
-export const OPEN_POPUP_COLUMNS = 'open_popup_columns';
 export const APPLY_COLUMNS = 'apply_columns';
 
 
@@ -102,8 +101,6 @@ export const storeReducer = (
     case OPEN_POPUP:
       return {...state, popUpIsOpen: !state.popUpIsOpen}
 
-    case OPEN_POPUP_COLUMNS:
-        return {...state, popUpColIsOpen: !state.popUpColIsOpen}
 
     default:
       return state;

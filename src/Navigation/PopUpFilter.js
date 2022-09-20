@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import classNames from "classnames";
 import { SELECT_OPTIONS_REGION, SELECT_OPTIONS_RATING, SELECT_OPTIONS_STATUS } from "../app/storeReducer";
 import { useDispatch, useSelector } from "react-redux";
 
-export const PopUpFilter = () => {
+export const PopUpFilter = ({buttonRef, togglePopUpFilter}) => {
   const regions = ['North America', 'Europe'];
   const riskRatings = ['Major', 'Not major'];
   const docStatuses = ['approved', 'disapproved'];
@@ -12,6 +12,7 @@ export const PopUpFilter = () => {
   const selectedRegions = useSelector(state => state.store.selectedOptionsRegion);
   const selectedRatings = useSelector(state => state.store.selectedOptionsRating);
   const selectedStatuses = useSelector(state => state.store.selectedOptionsStatus);
+  const filterRef = useRef();
 
   useEffect(() => {
 
@@ -27,8 +28,20 @@ export const PopUpFilter = () => {
     })
   }
 
+  useEffect(() => {
+    document.body.addEventListener('click', handleOutsideClick);
+  }, []);
+
+  const handleOutsideClick = (e) => {
+    if (!e.path.includes(filterRef.current) && !e.path.includes(buttonRef.current)) {
+      togglePopUpFilter(false);
+    }
+  }
+
   return (
-    <div className="popupFilter">
+    <div className="popupFilter" ref={(el) => {
+      filterRef.current = el;
+    }}>
       <div className="popupFilter__buttons">
         <p className="popupFilter__buttons_txt">
           Filter

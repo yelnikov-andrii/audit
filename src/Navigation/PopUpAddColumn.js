@@ -1,7 +1,8 @@
+import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { SELECT_COLUMNS, OPEN_POPUP_COLUMNS, APPLY_COLUMNS } from "../app/storeReducer";
 
-export const PopUpAddColumn = () => {
+export const PopUpAddColumn = ({btnRef, togglePopUpCol}) => {
   const selectedArr = useSelector(state => state.store.selectedColumns);
   const arrTxt = [
     'Audit number',
@@ -11,14 +12,30 @@ export const PopUpAddColumn = () => {
     'Audit risk rating',
     'Audit lead'
   ];
+  const colRef = useRef();
+
+  console.log(colRef)
   const dispatch = useDispatch();
 
+  const handleOutsideClick = (e) => {
+    if (!e.path.includes(colRef.current) && !e.path.includes(btnRef.current)) {
+      togglePopUpCol(false);
+    }
+  }
+
+  useEffect(() => {
+    document.body.addEventListener('click', handleOutsideClick);
+  }, []);
+
   return (
-    <div className="popupAddColumn">
-      <form onSubmit={(event) => {
-          event.preventDefault();
-          dispatch({type: OPEN_POPUP_COLUMNS})
-          dispatch({type: APPLY_COLUMNS});
+    <div className="popupAddColumn" ref={(elem) => {
+      colRef.current = elem;
+    }}>
+      <form
+        onSubmit={(event) => {
+        event.preventDefault();
+        togglePopUpCol(false);
+        dispatch({type: APPLY_COLUMNS});
         }}>
       <div className="popupAddColumn__buttons">
         <p className="popupAddColumn__buttons_txt">

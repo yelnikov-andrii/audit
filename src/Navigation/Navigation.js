@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { GET_OPTIONS, OPEN_POPUP, OPEN_POPUP_COLUMNS } from "../app/storeReducer";
+import { GET_OPTIONS } from "../app/storeReducer";
 import { PopUpFilter } from "./PopUpFilter";
 import { PopUpAddColumn } from "./PopUpAddColumn";
 
@@ -8,11 +8,21 @@ export const Navigation = ({setQuery}) => {
   const [input, setInput] = useState('');
   const dispatch = useDispatch();
   const selectedOptions = useSelector((state) => state.store.selectedOptions);
-  const popUpIsOpen = useSelector(state => state.store.popUpIsOpen);
-  const popUpColIsOpen = useSelector(state => state.store.popUpColIsOpen);
+  const [popUpColIsOpen, setPopupColIsOpen] = useState(false);
+  const [popUpFilterIsOpen, setPopupFilterIsOpen] = useState(false);
+  const btnRef = useRef();
+  const buttonRef = useRef();
 
   useEffect(() => {
   }, [selectedOptions])
+
+  const togglePopUpCol = (value) => {
+    setPopupColIsOpen(value);
+  }
+
+  const togglePopUpFilter = (value) => {
+    setPopupFilterIsOpen(value);
+  }
 
   return (
     <header className="navigation">
@@ -27,7 +37,7 @@ export const Navigation = ({setQuery}) => {
         <form className="navigation__form form" onSubmit={(event) => {
           event.preventDefault();
           dispatch({type: GET_OPTIONS})
-          dispatch({type: OPEN_POPUP})
+          setPopupFilterIsOpen(false);
         }}>
           <input 
             className="form__input"
@@ -47,28 +57,30 @@ export const Navigation = ({setQuery}) => {
           </button>
           <button 
             className="form__btn"
+            ref={buttonRef}
             onClick={(event) => {
               event.preventDefault();
-              dispatch({type: OPEN_POPUP});
+              setPopupFilterIsOpen(!popUpFilterIsOpen)
             }}
           >
             Filter By
           </button>
           <button 
             className="form__btn"
+            ref={btnRef}
             onClick={(event) => {
               event.preventDefault();
-              dispatch({type: OPEN_POPUP_COLUMNS});
+              setPopupColIsOpen(!popUpColIsOpen);
             }}
           >
             Add/Remove Columns
           </button>
-          {popUpIsOpen && (
-            <PopUpFilter />
+          {popUpFilterIsOpen && (
+            <PopUpFilter buttonRef={buttonRef} togglePopUpFilter={togglePopUpFilter} />
           )}
         </form>
         {popUpColIsOpen && (
-            <PopUpAddColumn />
+            <PopUpAddColumn btnRef={btnRef} togglePopUpCol={togglePopUpCol}/>
           )}
       </div>
       </div>
