@@ -1,0 +1,46 @@
+.list {
+  padding: 0;
+
+  &__item {
+    width: 20px;
+    box-sizing: border-box;
+  }
+
+  &__link {
+    border: none;
+    background: none;
+    outline: none;
+
+    &--arrow {
+      position: absolute;
+      right: 0;
+      bottom: 13px;
+    }
+
+    &--larrow {
+      position: absolute;
+      left: -30px;
+      bottom: 13px;
+    }
+
+    &--active {
+      font-weight: 600;
+      position: relative;
+      display: block;
+
+      &::before {
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        content: '';
+        background-color: blue;
+        width: 20px;
+        height: 3px;
+      }
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
