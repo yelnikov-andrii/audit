@@ -13,7 +13,7 @@ export const Main = ({data}) => {
   }
 
   const [sortedData, setSortedData] = useState(data);
-  const firstItem = lastItem - 10;
+  let firstItem = lastItem - 10;
   const amountOfPages = Math.ceil(data.length / 10);
   const pages = [];
   const [translate, setTranslate] = useState(0);
@@ -43,6 +43,10 @@ export const Main = ({data}) => {
   }
 
   const currentContent = sortedData.slice(firstItem, lastItem);
+
+  if (sortedData.length < 10) {
+    firstItem = 0;
+  }
 
 
   useEffect(() => {
@@ -162,13 +166,17 @@ export const Main = ({data}) => {
       </table>
       <div className="main__blockPagination pagination">
         <p className="pagination__txt">
-          Showing from <span className="pagination__txt--bold">{firstItem + 1}</span>
-          to <span className="pagination__txt--bold">{lastItem}</span>
-          of <span className="pagination__txt--bold">{data.length}</span>
+          Showing from <span className="pagination__txt--bold">
+            {firstItem + 1}
+            </span> to <span className="pagination__txt--bold">
+           {lastItem}</span> of <span className="pagination__txt--bold">
+            {data.length}</span>
         </p>
         <div className="pagination__buttons">
         <div 
-          className="pagination__container" 
+          className={classNames("pagination__container", {
+            'pagination__container--small': pages.length < 5,
+          })} 
           >
         <ul 
           className="pagination__buttons_list list"

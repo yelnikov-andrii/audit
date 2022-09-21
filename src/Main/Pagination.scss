@@ -5,6 +5,10 @@
   &__container {
     width: 120px;
     overflow-x: hidden;
+
+    &--small {
+      width: auto;
+    }
   }
 
   &__buttons {
