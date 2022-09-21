@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import classNames from "classnames";
-import { SELECT_OPTIONS_REGION, SELECT_OPTIONS_RATING, SELECT_OPTIONS_STATUS } from "../app/storeReducer";
+import { SELECT_OPTIONS_REGION, SELECT_OPTIONS_RATING, SELECT_OPTIONS_STATUS, CLEAR_CHANGES_FILTER } from "../app/storeReducer";
 import { useDispatch, useSelector } from "react-redux";
 
 export const PopUpFilter = ({buttonRef, togglePopUpFilter, popUpFilterIsOpen}) => {
@@ -51,7 +51,8 @@ export const PopUpFilter = ({buttonRef, togglePopUpFilter, popUpFilterIsOpen}) =
         </p>
         <button className="popupFilter__buttons_btn" onClick={(event) => {
           event.preventDefault();
-          setOpenedLists([])
+          setOpenedLists([]);
+          dispatch({type: CLEAR_CHANGES_FILTER});
         }}>
           Clear all
         </button>
