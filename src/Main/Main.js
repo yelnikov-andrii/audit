@@ -162,7 +162,9 @@ export const Main = ({data}) => {
       </table>
       <div className="main__blockPagination pagination">
         <p className="pagination__txt">
-          Showing from {firstItem + 1} to {lastItem} of {data.length}
+          Showing from <span className="pagination__txt--bold">{firstItem + 1}</span>
+          to <span className="pagination__txt--bold">{lastItem}</span>
+          of <span className="pagination__txt--bold">{data.length}</span>
         </p>
         <div className="pagination__buttons">
         <div 

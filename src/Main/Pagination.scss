@@ -17,4 +17,10 @@
       gap: 5px;
     }
   }
+
+  &__txt {
+    &--bold {
+      font-weight: 600;
+    }
+  }
 }
