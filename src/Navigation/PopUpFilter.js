@@ -3,7 +3,7 @@ import classNames from "classnames";
 import { SELECT_OPTIONS_REGION, SELECT_OPTIONS_RATING, SELECT_OPTIONS_STATUS } from "../app/storeReducer";
 import { useDispatch, useSelector } from "react-redux";
 
-export const PopUpFilter = ({buttonRef, togglePopUpFilter}) => {
+export const PopUpFilter = ({buttonRef, togglePopUpFilter, popUpFilterIsOpen}) => {
   const regions = ['North America', 'Europe'];
   const riskRatings = ['Major', 'Not major'];
   const docStatuses = ['approved', 'disapproved'];
@@ -39,8 +39,11 @@ export const PopUpFilter = ({buttonRef, togglePopUpFilter}) => {
   }
 
   return (
-    <div className="popupFilter" ref={(el) => {
-      filterRef.current = el;
+    <div className={classNames("popupFilter", 
+    {
+      "popupFilter--open": popUpFilterIsOpen === true
+    })} ref={(elem) => {
+      filterRef.current = elem;
     }}>
       <div className="popupFilter__buttons">
         <p className="popupFilter__buttons_txt">

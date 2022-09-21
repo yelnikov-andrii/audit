@@ -6,6 +6,7 @@ export const SELECT_COLUMNS = 'select_columns';
 export const GET_OPTIONS = 'get_options';
 export const OPEN_POPUP = 'open_popup';
 export const APPLY_COLUMNS = 'apply_columns';
+export const CLEAR_CHANGES_COLUMNS = 'clear_changes_columns';
 
 
 const defaultState = {
@@ -83,6 +84,19 @@ export const storeReducer = (
       columns.push(action.payload);
       return {...state, selectedColumns: [...columns]}
      }
+
+     case CLEAR_CHANGES_COLUMNS:
+      return {
+        ...state,
+        selectedColumns: [
+          'Audit number',
+          'Audit name',
+          'Audit region',
+          'Document status',
+          'Audit risk rating',
+          'Audit lead'
+        ],
+      }
 
      case APPLY_COLUMNS:
       return {

@@ -8,6 +8,12 @@
   border-radius: 4px;
   padding: 10px;
   border: 1px solid gray;
+  z-index: 2;
+  transform: scale(0);
+
+  &--open {
+    transform: scale(1);
+  }
 
   &__buttons {
     display: flex;

@@ -1,8 +1,9 @@
+import classNames from "classnames";
 import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { SELECT_COLUMNS, OPEN_POPUP_COLUMNS, APPLY_COLUMNS } from "../app/storeReducer";
+import { SELECT_COLUMNS, APPLY_COLUMNS, CLEAR_CHANGES_COLUMNS } from "../app/storeReducer";
 
-export const PopUpAddColumn = ({btnRef, togglePopUpCol}) => {
+export const PopUpAddColumn = ({btnRef, togglePopUpCol, popUpColIsOpen}) => {
   const selectedArr = useSelector(state => state.store.selectedColumns);
   const arrTxt = [
     'Audit number',
@@ -13,8 +14,6 @@ export const PopUpAddColumn = ({btnRef, togglePopUpCol}) => {
     'Audit lead'
   ];
   const colRef = useRef();
-
-  console.log(colRef)
   const dispatch = useDispatch();
 
   const handleOutsideClick = (e) => {
@@ -28,7 +27,9 @@ export const PopUpAddColumn = ({btnRef, togglePopUpCol}) => {
   }, []);
 
   return (
-    <div className="popupAddColumn" ref={(elem) => {
+    <div className={classNames("popupAddColumn", {
+      "popupAddColumn--open": popUpColIsOpen === true
+    })} ref={(elem) => {
       colRef.current = elem;
     }}>
       <form
@@ -41,7 +42,10 @@ export const PopUpAddColumn = ({btnRef, togglePopUpCol}) => {
         <p className="popupAddColumn__buttons_txt">
           Add/Remove Columns
         </p>
-        <button className="popupAddColumn__buttons_btn">
+        <button className="popupAddColumn__buttons_btn" onClick={(event) => {
+          event.preventDefault()
+          dispatch({type: CLEAR_CHANGES_COLUMNS })
+        }}>
           Clear all
         </button>
       </div>

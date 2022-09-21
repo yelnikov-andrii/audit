@@ -75,13 +75,9 @@ export const Navigation = ({setQuery}) => {
           >
             Add/Remove Columns
           </button>
-          {popUpFilterIsOpen && (
-            <PopUpFilter buttonRef={buttonRef} togglePopUpFilter={togglePopUpFilter} />
-          )}
+            <PopUpFilter buttonRef={buttonRef} togglePopUpFilter={togglePopUpFilter} popUpFilterIsOpen={popUpFilterIsOpen}/>
         </form>
-        {popUpColIsOpen && (
-            <PopUpAddColumn btnRef={btnRef} togglePopUpCol={togglePopUpCol}/>
-          )}
+            <PopUpAddColumn btnRef={btnRef} togglePopUpCol={togglePopUpCol} popUpColIsOpen={popUpColIsOpen}/>
       </div>
       </div>
     </header>
