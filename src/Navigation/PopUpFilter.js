@@ -30,6 +30,7 @@ export const PopUpFilter = ({buttonRef, togglePopUpFilter, popUpFilterIsOpen}) =
 
   useEffect(() => {
     document.body.addEventListener('click', handleOutsideClick);
+    // eslint-disable-next-line
   }, []);
 
   const handleOutsideClick = (e) => {

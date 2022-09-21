@@ -24,6 +24,7 @@ export const PopUpAddColumn = ({btnRef, togglePopUpCol, popUpColIsOpen}) => {
 
   useEffect(() => {
     document.body.addEventListener('click', handleOutsideClick);
+    // eslint-disable-next-line
   }, []);
 
   return (
