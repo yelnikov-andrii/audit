@@ -55,6 +55,7 @@ export const PopUpAddColumn = ({btnRef, togglePopUpCol, popUpColIsOpen}) => {
           <li className="select__list_item" key={text}>
             <input 
               type="checkbox"
+              className="select__list_input"
               checked={selectedArr.includes(text) ? true : false}
               onChange={(event) => {
                 dispatch({type: SELECT_COLUMNS, payload: event.target.value})

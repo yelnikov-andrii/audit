@@ -1,15 +1,16 @@
 .popupFilter {
   position: absolute;
   top: 40px;
-  right: 151px;
+  right: 76px;
   width: 220px;
-  height: 350px;
+  height: auto;
   background-color: #fff;
   border-radius: 4px;
   padding: 10px;
   border: 1px solid gray;
   z-index: 2;
   transform: scale(0);
+  min-height: 320px;
 
   &--open {
     transform: scale(1);
@@ -32,6 +33,10 @@
       color: blue;
       text-decoration: underline;
 
+      &:hover {
+        cursor: pointer;
+      }
+
     }
   }
 
@@ -45,6 +50,10 @@
         align-self: flex-end;
         width: 60px;
         height: 25px;
+
+        &:hover {
+          cursor: pointer;
+        }
       }
   }
 }

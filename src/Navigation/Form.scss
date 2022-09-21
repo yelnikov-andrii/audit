@@ -1,15 +1,23 @@
 .form {
   display: flex;
-  gap: 10px;
   position: relative;
 
   &__input {
     width: 70%;
-    height: 25px;
-    border-radius: 6px;
+    height: 40px;
+    border-radius: 6px 0 0 6px;
     outline: none;
     text-indent: 10px;
     padding: 5px;
+    box-sizing: border-box;
+  }
+
+  &__buttonsWrapper {
+    margin-left: 60px;
+    height: 40px;
+    width: 130px;
+    display: flex;
+    justify-content: space-between;
   }
 
   &__btn {
@@ -17,9 +25,64 @@
     outline: none;
     color: #fff;
     background-color: blue;
+    height: 40px;
+
+    &:hover {
+      cursor: pointer;
+    }
 
     &--search {
       background-color: blue;
+      width: 110px;
+      position: relative;
+
+      &::before {
+        position: absolute;
+        content: '';
+        width: 2px;
+        height: 40px;
+        top: 0;
+        right: -30px;
+        background-color: #fff;
+      }
+    }
+
+    &--filter {
+      position: relative;
+      width: 50px;
+
+      &:before {
+        width: 40px;
+        height: 40px;
+        background-image: url('https://cdn1.iconfinder.com/data/icons/basic-mobile-ios-android/24/Filter-512.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        content: '';
+      }
+    }
+
+    &--column {
+      width: 50px;
+      position: relative;
+
+      &::before {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        background-image: url('https://th.bing.com/th/id/OIP.zpV3Mt02GSSzhD4epHVnEQHaHa?pid=ImgDet&rs=1');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        content: '';
+        width: 30px;
+        height: 30px;
+        transform: translate(-50%, -50%);
+      }
     }
   }
 }

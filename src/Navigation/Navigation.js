@@ -55,26 +55,26 @@ export const Navigation = ({setQuery}) => {
           >
             Search
           </button>
+          <div className="form__buttonsWrapper">
           <button 
-            className="form__btn"
+            className="form__btn form__btn--filter"
             ref={buttonRef}
             onClick={(event) => {
               event.preventDefault();
               setPopupFilterIsOpen(!popUpFilterIsOpen)
             }}
           >
-            Filter By
           </button>
           <button 
-            className="form__btn"
+            className="form__btn form__btn--column"
             ref={btnRef}
             onClick={(event) => {
               event.preventDefault();
               setPopupColIsOpen(!popUpColIsOpen);
             }}
           >
-            Add/Remove Columns
           </button>
+          </div>
             <PopUpFilter buttonRef={buttonRef} togglePopUpFilter={togglePopUpFilter} popUpFilterIsOpen={popUpFilterIsOpen}/>
         </form>
             <PopUpAddColumn btnRef={btnRef} togglePopUpCol={togglePopUpCol} popUpColIsOpen={popUpColIsOpen}/>

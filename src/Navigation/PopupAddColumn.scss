@@ -3,12 +3,14 @@
   top: 113px;
   right: 266px;
   width: 220px;
-  height: 320px;
+  height: auto;
   background-color: #fff;
   border-radius: 4px;
   border: 2px solid gray;
   padding: 10px;
   transform: scale(0);
+  min-height: 320px;
+  z-index: 2;
 
   &--open {
     transform: scale(1);
@@ -30,6 +32,10 @@
       color: blue;
       text-decoration: underline;
 
+      &:hover {
+        cursor: pointer;
+      }
+
     }
   }
 
@@ -43,6 +49,10 @@
         align-self: flex-end;
         width: 60px;
         height: 25px;
+
+        &:hover {
+          cursor: pointer;
+        }
       }
   }
 }

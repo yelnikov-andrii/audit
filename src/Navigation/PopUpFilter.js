@@ -53,14 +53,16 @@ export const PopUpFilter = ({buttonRef, togglePopUpFilter, popUpFilterIsOpen}) =
           event.preventDefault();
           setOpenedLists([])
         }}>
-          Close all
+          Clear all
         </button>
       </div>
       <div className="popupFilter__formBlock">
         <div className="popupFilter__form">
           <div className="popupFilter__form_select select">
             <p 
-              className="select__title" 
+              className={classNames("select__title", {
+                "select__title--opened": openedLists.includes('Audit region')
+              })} 
               onClick={() => {
               openList('Audit region');
               }}
@@ -80,6 +82,7 @@ export const PopUpFilter = ({buttonRef, togglePopUpFilter, popUpFilterIsOpen}) =
                     value={region}
                     checked={selectedRegions.includes(region) ? true : false}
                     id={region}
+                    className="select__list_input"
                     onChange={(event) => {
                       dispatch({type: SELECT_OPTIONS_REGION, payload: event.target.value});
                     }}
@@ -96,7 +99,9 @@ export const PopUpFilter = ({buttonRef, togglePopUpFilter, popUpFilterIsOpen}) =
           </div>
           <div className="popupFilter__form_select select">
             <p 
-              className="select__title" 
+              className={classNames("select__title", {
+                "select__title--opened": openedLists.includes('Risk rating')
+              })}  
               onClick={() => {
               openList('Risk rating');
               }}
@@ -112,6 +117,7 @@ export const PopUpFilter = ({buttonRef, togglePopUpFilter, popUpFilterIsOpen}) =
                 <li className="select__list_item" key={rating}>
                   <input 
                     type="checkbox" 
+                    className="select__list_input"
                     value={rating} 
                     checked={selectedRatings.includes(rating) ? true : false}
                     id={rating} 
@@ -126,7 +132,9 @@ export const PopUpFilter = ({buttonRef, togglePopUpFilter, popUpFilterIsOpen}) =
           </div>
           <div className="popupFilter__form_select select">
             <p 
-              className="select__title" 
+              className={classNames("select__title", {
+                "select__title--opened": openedLists.includes('Document status')
+              })} 
               onClick={() => {
               openList('Document status');
               }}
@@ -144,6 +152,7 @@ export const PopUpFilter = ({buttonRef, togglePopUpFilter, popUpFilterIsOpen}) =
                 <input 
                   type="checkbox" 
                   value={status}
+                  className="select__list_input"
                   checked={selectedStatuses.some(el => el === status) ? true : false}
                   id={status} 
                   onChange={(event) => {
