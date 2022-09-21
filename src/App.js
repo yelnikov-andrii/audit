@@ -5,7 +5,7 @@ import { Main } from './Main/Main';
 import { getData } from "./api";
 import { useSelector } from 'react-redux';
 
-const App = () => {
+export const App = () => {
   const [data, setData] = useState([]);
   const [appliedInput, setAppliedInput] = useState('');
   const appliedRegions = useSelector(state => state.store.appliedOptionsRegion);

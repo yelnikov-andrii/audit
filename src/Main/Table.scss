@@ -1,17 +1,38 @@
 .table {
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+
+  border-collapse: collapse;
 
   &__header {
 
     &_row {
-      border: 1px solid grey;
-      border-collapse: collapse;
+      border: 1px solid blue;
+      height: 40px;
+      text-align: left;
+      text-indent: 5px;
+      position: relative;
+
+      &:before {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        content: '';
+        background-image: url('https://image.freepik.com/free-icon/sort-up-and-down-arrows-couple_318-53097.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        width: 15px;
+        height: 15px;
+      }
     }
   }
 
   &__body {
     &_row {
       border: 1px solid gray;
-      border-collapse: collapse;
+      height: 30px;
     }
   }
 }
