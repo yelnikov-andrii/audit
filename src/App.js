@@ -23,7 +23,12 @@ const App = () => {
           let filtered = [];
 
           if (appliedInput !== '') {
-            filtered = res.filter(obj => obj.name.toLowerCase().includes(appliedInput.toLowerCase() || obj.id.toLowerCase().includes(appliedInput.toLowerCase()) || obj.lead.toLowerCase().includes(appliedInput.toLowerCase())));
+            const filteredName = [...res].filter(obj => obj.name.toLowerCase().includes(appliedInput.toLowerCase()));
+            const filteredNumber = [...res].filter(obj => obj.number.toLowerCase().includes(appliedInput.toLowerCase()));
+            const filteredLead = [...res].filter(obj => obj.lead.toLowerCase().includes(appliedInput.toLowerCase()));
+            const all = [...filteredLead, ...filteredName, ...filteredNumber];
+            const newSet = new Set(all);
+            filtered = newSet;
           } else {
             filtered = [...res];
           }
