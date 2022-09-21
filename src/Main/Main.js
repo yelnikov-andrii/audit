@@ -7,7 +7,6 @@ export const Main = ({data}) => {
   const columns = useSelector(state => state.store.appliedColumns);
   const animationDuration = 1000;
 
-
   let lastItem = selectedPage * 10;
   if (lastItem > data.length) {
     lastItem = data.length;
