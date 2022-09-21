@@ -21,7 +21,7 @@ export const Main = ({data}) => {
   const [sortDirectly, setSortDirectly] = useState(true);
 
   useEffect(() => {
-    setSortedData(data)
+    setSortedData([...data])
   }, [data]);
 
   const sortBy = (title, howTosort) => {
@@ -42,11 +42,11 @@ export const Main = ({data}) => {
     }
   }
 
-  const currentContent = sortedData.slice(firstItem, lastItem);
-
   if (sortedData.length < 10) {
     firstItem = 0;
   }
+
+  const currentContent = sortedData.slice(firstItem, lastItem);
 
 
   useEffect(() => {

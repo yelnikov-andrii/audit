@@ -42,7 +42,11 @@ export const App = () => {
           }
 
           if (appliedStatuses.length > 0) {
-            selected = selected.filter(el => appliedStatuses.includes(el.status))
+            selected = selected.filter(el => {
+              if(appliedStatuses.some(status => status === el.status)) {
+                return el;
+              }
+            })
           }
 
           setData(selected);
