@@ -19,17 +19,27 @@ export const Main = ({data}) => {
   const pages = [];
   const [translate, setTranslate] = useState(0);
   const [sortByWhat, setSortByWhat] = useState('');
+  const [sortDirectly, setSortDirectly] = useState(true);
 
   useEffect(() => {
     setSortedData(data)
   }, [data]);
 
-  const sortBy = (title) => {
+  const sortBy = (title, howTosort) => {
     if (title) {
-      setSortedData(prev => {
-        const sorted = [...prev].sort((a, b) => a[`${title}`].localeCompare(b[`${title}`]));
+      let sorted = [];
+      if (howTosort === true) {
+        setSortedData(prev => {
+          sorted = [...prev].sort((a, b) => a[`${title}`].localeCompare(b[`${title}`]));
+          return sorted;
+        })
+      } else {
+        setSortedData(prev => {
+          sorted = [...prev].sort((a, b) => b[`${title}`].localeCompare(a[`${title}`]));
+          return sorted;
+        })
         return sorted;
-      })
+      }
     }
   }
 
@@ -37,8 +47,8 @@ export const Main = ({data}) => {
 
 
   useEffect(() => {
-    sortBy(sortByWhat);
-  }, [sortByWhat])
+    sortBy(sortByWhat, sortDirectly);
+  }, [sortByWhat, sortDirectly])
 
   for (let i = 1; i <= amountOfPages; i++) {
     pages.push(i);
@@ -60,29 +70,38 @@ export const Main = ({data}) => {
           <th 
             className="table__header_row"
             onClick={() => {
+              setSortDirectly(!sortDirectly);
               setSortByWhat('number');
             }}
           >
-            Audit number
+            <span className="table__header_txt">
+              Audit number
+            </span>
           </th>
         )}
         {columns.includes('Audit name') && (
         <th 
           className="table__header_row"
           onClick={() => {
+            setSortDirectly(!sortDirectly);
             setSortByWhat('name');
           }}
         >
+        <span className="table__header_txt">
           Audit name
+          </span>
         </th>)}
         {columns.includes('Audit region') && (
         <th 
           className="table__header_row"
           onClick={() => {
             setSortByWhat('region');
+            setSortDirectly(!sortDirectly);
           }}
         >
-          Audit region
+          <span className="table__header_txt">
+            Audit region
+          </span>
         </th>
         )}
         {columns.includes('Document status') && (
@@ -90,8 +109,12 @@ export const Main = ({data}) => {
           className="table__header_row"
           onClick={() => {
             setSortByWhat('status');
+            setSortDirectly(!sortDirectly);
           }}
-          >Document status
+          >
+          <span className="table__header_txt">
+            Document status
+          </span>
         </th>
         )}
         {columns.includes('Audit risk rating') && (
@@ -99,9 +122,12 @@ export const Main = ({data}) => {
           className="table__header_row"
           onClick={() => {
             setSortByWhat('rating');
+            setSortDirectly(!sortDirectly);
           }}
         >
-          Audit risk rating
+          <span className="table__header_txt">
+            Audit risk rating
+          </span>
         </th>
         )}
         {columns.includes('Audit lead') && (
@@ -109,9 +135,12 @@ export const Main = ({data}) => {
           className="table__header_row"
           onClick={() => {
             setSortByWhat('lead');
+            setSortDirectly(!sortDirectly);
           }}
         >
-          Audit lead
+          <span className="table__header_txt">
+            Audit lead
+          </span>
         </th>
         )}
         </tr>

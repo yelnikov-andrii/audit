@@ -7,6 +7,7 @@ export const GET_OPTIONS = 'get_options';
 export const OPEN_POPUP = 'open_popup';
 export const APPLY_COLUMNS = 'apply_columns';
 export const CLEAR_CHANGES_COLUMNS = 'clear_changes_columns';
+export const CLEAR_CHANGES_FILTER = 'clear_changes_filter';
 
 
 const defaultState = {
@@ -96,6 +97,14 @@ export const storeReducer = (
           'Audit risk rating',
           'Audit lead'
         ],
+      }
+
+    case CLEAR_CHANGES_FILTER:
+      return {
+        ...state,
+        selectedOptionsRegion: [],
+        selectedOptionsRating: [],
+        selectedOptionsStatus: [],
       }
 
      case APPLY_COLUMNS:
