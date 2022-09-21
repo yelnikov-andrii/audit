@@ -9,10 +9,9 @@ export const PopUpFilter = ({buttonRef, togglePopUpFilter, popUpFilterIsOpen}) =
   const docStatuses = ['approved', 'disapproved'];
   const [openedLists, setOpenedLists] = useState([]);
   const dispatch = useDispatch();
-  // const selectedRegions = useSelector(state => state.store.selectedOptionsRegion);
-  // const selectedRatings = useSelector(state => state.store.selectedOptionsRating);
-  // const selectedStatuses = useSelector(state => state.store.selectedOptionsStatus);
-  const [selectedRegions, setSelectedRegions] = useState([]);
+  const selectedRegions = useSelector(state => state.store.selectedOptionsRegion);
+  const selectedRatings = useSelector(state => state.store.selectedOptionsRating);
+  const selectedStatuses = useSelector(state => state.store.selectedOptionsStatus);
   const filterRef = useRef();
 
   useEffect(() => {
